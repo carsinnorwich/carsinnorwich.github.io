@@ -10,18 +10,22 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
-            padding: 20px;
+            /* Smaller padding on mobile, expands on desktop */
+            padding: 15px;
             display: flex;
             justify-content: center;
             background-color: #f0f0f0;
         }
 
         .flyer-container {
-            width: 1100px;
+            /* Changed to max-width to allow shrinking on mobile */
+            width: 100%;
+            max-width: 1100px;
             background-color: white;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
+            border-radius: 8px; /* Added subtle rounding */
         }
 
         .header-footer {
@@ -29,14 +33,23 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 0;
+            gap: 10px;
+        }
+
+        /* Dynamically scale logos */
+        .header-footer img {
+            width: clamp(40px, 8vw, 60px);
+            height: auto;
         }
 
         h1 {
-            font-size: 52px;
+            /* Smoothly scales between 24px and 52px */
+            font-size: clamp(24px, 5vw, 52px);
             font-weight: 900;
             margin: 0;
             letter-spacing: 1px;
             text-align: center;
+            line-height: 1.2;
         }
 
         .text-yellow {
@@ -65,31 +78,38 @@
 
         .established {
             text-align: center;
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 24px);
             font-weight: 900;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .content-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            /* Stack on mobile by default */
+            flex-direction: column;
+            gap: 30px;
             margin-bottom: 40px;
-            padding: 0 20px;
+        }
+
+        .left-col, .center-col, .right-col {
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .left-col {
-            width: 33%;
             font-size: 18px;
             font-weight: 900;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .left-col p {
-            margin: 0 0 20px 0;
+            margin: 0 0 15px 0;
+            line-height: 1.4;
         }
 
         .center-col {
-            width: 33%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -101,21 +121,20 @@
             height: auto;
             display: block;
             border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .right-col {
-            width: 33%;
             text-align: center;
             font-weight: 900;
             background-color: #f9f9f9;
-            padding: 15px;
+            padding: 20px;
             border: 2px solid #00a650;
             border-radius: 8px;
-            box-sizing: border-box;
         }
 
         .phone {
-            font-size: 22px;
+            font-size: clamp(20px, 4vw, 22px);
             margin-bottom: 12px;
             color: #00a650;
         }
@@ -123,12 +142,18 @@
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        /* Ensure form elements don't overflow */
+        .contact-form input, .contact-form button {
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .contact-form input {
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-family: inherit;
@@ -139,7 +164,7 @@
             background-color: #00a650;
             color: white;
             border: none;
-            padding: 12px;
+            padding: 14px;
             font-size: 18px;
             font-weight: 900;
             cursor: pointer;
@@ -153,16 +178,39 @@
         }
 
         .thank-you {
-            font-size: 32px;
+            font-size: clamp(24px, 5vw, 32px);
             margin-top: 15px;
             display: block;
         }
 
         .bottom-text {
             text-align: center;
-            font-size: 19px;
+            font-size: clamp(15px, 3vw, 19px);
             font-weight: 900;
             margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        /* Desktop and Tablet layout overrides */
+        @media (min-width: 768px) {
+            body {
+                padding: 30px;
+            }
+            .flyer-container {
+                padding: 40px;
+            }
+            .content-container {
+                flex-direction: row; /* Switch to columns */
+                align-items: stretch;
+                padding: 0 10px;
+                gap: 25px; /* Add space between columns */
+            }
+            .left-col, .center-col, .right-col {
+                width: 33.33%;
+            }
+            .left-col p {
+                margin: 0 0 20px 0;
+            }
         }
     </style>
 </head>
@@ -173,14 +221,14 @@
 
         <!-- Top Header -->
         <div class="header-footer">
-            <img src="norwich-city.png" width="60" alt="logo" onerror="this.style.display='none'">
+            <img src="norwich-city.png" alt="logo" onerror="this.style.display='none'">
             <h1>
                 <span class="text-yellow">BUY</span>
                 <span class="text-green">A</span>
                 <span class="text-yellow">CAR</span>
                 <span class="text-green">NORWICH</span>
             </h1>
-            <img src="norwich-city.png" width="60" alt="logo" onerror="this.style.display='none'">
+            <img src="norwich-city.png" alt="logo" onerror="this.style.display='none'">
         </div>
 
         <hr class="divider-top">
@@ -190,7 +238,7 @@
         <div class="content-container">
             <!-- Left Info -->
             <div class="left-col">
-                <p>1. Sell you car the easy way today</p>
+                <p>1. Sell your car the easy way today</p>
                 <p>2. We come to you - Hassle FREE</p>
                 <p>3. Male and female staff</p>
                 <p>4. Norwich based</p>
@@ -199,7 +247,7 @@
 
             <!-- Center Image -->
             <div class="center-col">
-                <img src="cars.jpg" alt="Cars">
+                <img src="cars.jpg" alt="Cars" onerror="this.style.display='none'">
             </div>
 
             <!-- Right Contact Form -->
@@ -210,7 +258,7 @@
                 <form class="contact-form" id="valuationForm">
                     <input type="text" id="reg" placeholder="Car Registration" required>
                     <input type="text" id="mileage" placeholder="Current Mileage" required>
-                    <input type="text" id="phonenumber" placeholder="Phone Number" required>
+                    <input type="tel" id="phonenumber" placeholder="Phone Number" required>
                     <button type="submit">Email My Details</button>
                 </form>
 
@@ -219,21 +267,21 @@
         </div>
 
         <div class="bottom-text">
-            BuyACarNorwich.co.uk make the process of selling your car as simple and transparent as possible
+            BuyACarNorwich.co.uk makes the process of selling your car as simple and transparent as possible
         </div>
 
         <hr class="divider-bottom">
 
         <!-- Bottom Header -->
         <div class="header-footer">
-            <img src="norwich-city.png" width="60" alt="logo" onerror="this.style.display='none'">
+            <img src="norwich-city.png" alt="logo" onerror="this.style.display='none'">
             <h1>
                 <span class="text-yellow">BUY</span>
                 <span class="text-green">A</span>
                 <span class="text-yellow">CAR</span>
                 <span class="text-green">NORWICH</span>
             </h1>
-            <img src="norwich-city.png" width="60" alt="logo" onerror="this.style.display='none'">
+            <img src="norwich-city.png" alt="logo" onerror="this.style.display='none'">
         </div>
 
     </div>
@@ -245,13 +293,15 @@
             const recipient = "buyacarnorwich@gmail.com";
             const reg = document.getElementById('reg').value;
             const mileage = document.getElementById('mileage').value;
+            const phonenumber = document.getElementById('phonenumber').value;
             
             const subject = encodeURIComponent("Car Valuation Request - " + reg);
             const body = encodeURIComponent(
                 "Hello Buy A Car Norwich,\n\n" +
                 "I would like a valuation for my vehicle:\n\n" +
                 "Registration: " + reg + "\n" +
-                "Mileage: " + mileage + "\n\n" +
+                "Mileage: " + mileage + "\n" +
+                "Phone Number: " + phonenumber + "\n\n" +
                 "Please get back to me with a price. Thank you!"
             );
             
