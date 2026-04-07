@@ -125,27 +125,25 @@
 <body class="min-h-screen">
 
     <!-- Navigation -->
-    <nav class="sticky top-0 z-40 glass py-3 px-6 border-b">
+    <nav class="sticky top-0 z-50 glass py-4 px-6 mb-8 border-b">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-[#00a650] rounded-full flex items-center justify-center text-white shadow-lg">
                     <i data-lucide="car"></i>
                 </div>
-                <h1 class="brand-text text-xl sm:text-2xl">
-                    <span class="text-[#d6df20]">Buy</span><span class="text-[#00a650]">A</span><span
-                        class="text-[#d6df20]">Car</span><span class="opacity-50 font-normal">Norwich</span>
+                <h1 class="brand-text text-xl sm:text-2xl hidden sm:block">
+                    <span class="text-[#d6df20]">Buy</span><span class="text-[#00a650]">A</span><span class="text-[#d6df20]">Car</span><span class="opacity-50">Norwich</span>
                 </h1>
             </div>
-
-            <div class="flex items-center gap-3">
-                <a href="tel:07836708868"
-                    class="hidden sm:flex items-center gap-2 px-4 py-2 bg-[#00a650]/10 text-[#00a650] rounded-lg font-bold hover:bg-[#00a650]/20 transition-all">
-                    <i data-lucide="phone-call" class="w-4 h-4"></i>
-                    Call Us
+            
+            <div class="flex items-center gap-4">
+                <a href="tel:07836708868" class="flex items-center gap-2 font-bold text-[#00a650] hover:text-[#008440] transition-colors">
+                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                    <span class="hidden xs:inline">07836 708868</span>
                 </a>
                 <button onclick="toggleTheme()" class="theme-toggle" id="themeBtn">
-                    <i data-lucide="moon" class="dark:hidden w-5 h-5"></i>
-                    <i data-lucide="sun" class="hidden dark:block text-yellow-400 w-5 h-5"></i>
+                    <i data-lucide="moon" class="dark:hidden"></i>
+                    <i data-lucide="sun" class="hidden dark:block text-yellow-400"></i>
                 </button>
             </div>
         </div>
