@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <title>Buy A Car Norwich</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            /* Smaller padding on mobile, expands on desktop */
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
+
+        .flyer-container {
+            /* Changed to max-width to allow shrinking on mobile */
+            width: 100%;
+            max-width: 1100px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            border-radius: 8px; /* Added subtle rounding */
+        }
+
+        .header-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            gap: 10px;
+        }
+
+        /* Dynamically scale logos */
+        .header-footer img {
+            width: clamp(40px, 8vw, 60px);
+            height: auto;
+        }
+
+        h1 {
+            /* Smoothly scales between 24px and 52px */
+            font-size: clamp(24px, 5vw, 52px);
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .text-yellow {
+            color: #d6df20;
+        }
+
+        .text-green {
+            color: #00a650;
+        }
+
+        .divider-top {
+            border: none;
+            border-top: 5px solid #00a650;
+            border-bottom: 2px solid #00a650;
+            height: 4px;
+            margin: 15px 0 25px 0;
+        }
+
+        .divider-bottom {
+            border: none;
+            border-top: 2px solid #00a650;
+            border-bottom: 5px solid #00a650;
+            height: 4px;
+            margin: 25px 0 15px 0;
+        }
+
+        .established {
+            text-align: center;
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+
+        .content-container {
+            display: flex;
+            /* Stack on mobile by default */
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .left-col, .center-col, .right-col {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .left-col {
+            font-size: 18px;
+            font-weight: 900;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-col p {
+            margin: 0 0 15px 0;
+            line-height: 1.4;
+        }
+
+        .center-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .center-col img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .right-col {
+            text-align: center;
+            font-weight: 900;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 2px solid #00a650;
+            border-radius: 8px;
+        }
+
+        .phone {
+            font-size: clamp(20px, 4vw, 22px);
+            margin-bottom: 12px;
+            color: #00a650;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        /* Ensure form elements don't overflow */
+        .contact-form input, .contact-form button {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .contact-form input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 16px;
+        }
+
+        .contact-form button {
+            background-color: #00a650;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 18px;
+            font-weight: 900;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s;
+            text-transform: uppercase;
+        }
+
+        .contact-form button:hover {
+            background-color: #008440;
+        }
+
+        .thank-you {
+            font-size: clamp(24px, 5vw, 32px);
+            margin-top: 15px;
+            display: block;
+        }
+
+        .bottom-text {
+            text-align: center;
+            font-size: clamp(15px, 3vw, 19px);
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        /* Desktop and Tablet layout overrides */
+        @media (min-width: 768px) {
+            body {
+                padding: 30px;
+            }
+            .flyer-container {
+                padding: 40px;
+            }
+            .content-container {
+                flex-direction: row; /* Switch to columns */
+                align-items: stretch;
+                padding: 0 10px;
+                gap: 25px; /* Add space between columns */
+            }
+            .left-col, .center-col, .right-col {
+                width: 33.33%;
+            }
+            .left-col p {
+                margin: 0 0 20px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flyer-container">
+
+        <!-- Top Header -->
+        <div class="header-footer">
+            <img src="norwich-city.png" alt="logo" onerror="this.style.display='none'">
+            <h1>
+                <span class="text-yellow">BUY</span>
+                <span class="text-green">A</span>
+                <span class="text-yellow">CAR</span>
+                <span class="text-green">NORWICH</span>
+            </h1>
+            <img src="norwich-city.png" alt="logo" onerror="this.style.display='none'">
+        </div>
+
+        <hr class="divider-top">
+
+        <div class="established">Established over 40 years</div>
+
+        <div class="content-container">
+            <!-- Left Info -->
+            <div class="left-col">
+                <p>1. Sell your car the easy way today</p>
+                <p>2. We come to you - Hassle FREE</p>
+                <p>3. Male and female staff</p>
+                <p>4. Norwich based</p>
+                <p>5. Same day Cash or Bank transfer</p>
+                <p>6. Existing finance settled</p>
+            </div>
+
+            <!-- Center Image -->
+            <div class="center-col">
+                <img src="cars.jpg" alt="Cars" onerror="this.style.display='none'">
+            </div>
+
+            <!-- Right Contact Form -->
+            <div class="right-col">
+                <div class="phone">Call 07836 708868</div>
+                <div style="font-size: 15px; margin-bottom: 8px;">Get a valuation via email:</div>
+                
+                <form class="contact-form" id="valuationForm">
+                    <input type="text" id="reg" placeholder="Car Registration" required>
+                    <input type="text" id="mileage" placeholder="Current Mileage" required>
+                    <input type="tel" id="phonenumber" placeholder="Phone Number" required>
+                    <button type="submit">Email My Details</button>
+                </form>
+
+                <div class="thank-you">Thank You</div>
+            </div>
+        </div>
+
+        <div class="bottom-text">
+            BuyACarNorwich.co.uk makes the process of selling your car as simple and transparent as possible
+        </div>
+
+        <hr class="divider-bottom">
+
+        <!-- Bottom Header -->
+        <div class="header-footer">
+            <img src="norwich-city.png" alt="logo" onerror="this.style.display='none'">
+            <h1>
+                <span class="text-yellow">BUY</span>
+                <span class="text-green">A</span>
+                <span class="text-yellow">CAR</span>
+                <span class="text-green">NORWICH</span>
+            </h1>
+            <img src="norwich-city.png" alt="logo" onerror="this.style.display='none'">
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('valuationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const recipient = "buyacarnorwich@gmail.com";
+            const reg = document.getElementById('reg').value;
+            const mileage = document.getElementById('mileage').value;
+            const phonenumber = document.getElementById('phonenumber').value;
+            
+            const subject = encodeURIComponent("Car Valuation Request - " + reg);
+            const body = encodeURIComponent(
+                "Hello Buy A Car Norwich,\n\n" +
+                "I would like a valuation for my vehicle:\n\n" +
+                "Registration: " + reg + "\n" +
+                "Mileage: " + mileage + "\n" +
+                "Phone Number: " + phonenumber + "\n\n" +
+                "Please get back to me with a price. Thank you!"
+            );
+            
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        });
+    </script>
+
+</body>
+
+</html>
