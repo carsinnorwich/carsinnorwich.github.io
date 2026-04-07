@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy A Car Norwich | Sell Your Car Instantly</title>
-	<link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -51,10 +52,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, var(--brand-green) 0%, #007d3c 100%);
-        }
-
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -66,18 +63,22 @@
             transform: translateY(0);
         }
 
-        .car-image-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
+        .float {
+            animation: float 4s ease-in-out infinite;
         }
 
-        .car-image-container img {
-            transition: transform 0.6s ease;
-        }
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
 
-        .car-image-container:hover img {
-            transform: scale(1.05);
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         .brand-text {
@@ -100,69 +101,64 @@
             outline: 2px solid #ef4444 !important;
         }
 
-        /* Floating Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .float {
-            animation: float 4s ease-in-out infinite;
-        }
-
         .theme-toggle {
             cursor: pointer;
-            width: 48px;
-            height: 48px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
+            border-radius: 10px;
             background: var(--bg-secondary);
             border: 1px solid rgba(128, 128, 128, 0.2);
             transition: all 0.3s ease;
         }
 
-        .theme-toggle:hover {
-            transform: rotate(15deg);
+        /* Modal Overlay */
+        #successModal {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
         }
     </style>
 </head>
+
 <body class="min-h-screen">
 
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 glass py-4 px-6 mb-8 border-b">
+    <nav class="sticky top-0 z-40 glass py-3 px-6 border-b">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-[#00a650] rounded-full flex items-center justify-center text-white shadow-lg">
                     <i data-lucide="car"></i>
                 </div>
-                <h1 class="brand-text text-xl sm:text-2xl hidden sm:block">
-                    <span class="text-[#d6df20]">Buy</span><span class="text-[#00a650]">A</span><span class="text-[#d6df20]">Car</span><span class="opacity-50">Norwich</span>
+                <h1 class="brand-text text-xl sm:text-2xl">
+                    <span class="text-[#d6df20]">Buy</span><span class="text-[#00a650]">A</span><span
+                        class="text-[#d6df20]">Car</span><span class="opacity-50 font-normal">Norwich</span>
                 </h1>
             </div>
-            
-            <div class="flex items-center gap-4">
-                <a href="tel:07836708868" class="flex items-center gap-2 font-bold text-[#00a650] hover:text-[#008440] transition-colors">
-                    <i data-lucide="phone-call" class="w-5 h-5"></i>
-                    <span class="hidden xs:inline">07836 708868</span>
+
+            <div class="flex items-center gap-3">
+                <a href="tel:07836708868"
+                    class="hidden sm:flex items-center gap-2 px-4 py-2 bg-[#00a650]/10 text-[#00a650] rounded-lg font-bold hover:bg-[#00a650]/20 transition-all">
+                    <i data-lucide="phone-call" class="w-4 h-4"></i>
+                    Call Us
                 </a>
                 <button onclick="toggleTheme()" class="theme-toggle" id="themeBtn">
-                    <i data-lucide="moon" class="dark:hidden"></i>
-                    <i data-lucide="sun" class="hidden dark:block text-yellow-400"></i>
+                    <i data-lucide="moon" class="dark:hidden w-5 h-5"></i>
+                    <i data-lucide="sun" class="hidden dark:block text-yellow-400 w-5 h-5"></i>
                 </button>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-8 sm:pt-16">
+
         <!-- Hero Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24 reveal">
             <div>
-                <span style="background-color: var(--badge-bg); color: var(--badge-text);" class="inline-block px-4 py-1 rounded-full font-bold text-sm mb-4">
+                <span
+                    class="inline-block px-4 py-1 rounded-full font-bold text-xs mb-4 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
                     ESTABLISHED OVER 40 YEARS
                 </span>
                 <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
@@ -170,128 +166,231 @@
                     <span class="text-[#00a650]">never been easier.</span>
                 </h2>
                 <p class="text-lg opacity-80 mb-8 max-w-lg">
-                    We provide a local, transparent, and hassle-free way to sell your vehicle in Norwich. No hidden fees, just honest valuations and same-day payment.
+                    We provide a local, transparent, and hassle-free way to sell your vehicle in Norwich. No hidden
+                    fees, just honest valuations and same-day payment.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#valuation" class="px-8 py-4 bg-[#00a650] text-white rounded-xl font-bold text-lg hover:bg-[#008440] transition-all shadow-xl hover:shadow-green-500/20 transform hover:-translate-y-1">
+                    <a href="#valuation"
+                        class="px-8 py-4 bg-[#00a650] text-white rounded-xl font-bold text-lg hover:bg-[#008440] transition-all shadow-xl hover:shadow-green-500/20 transform hover:-translate-y-1">
                         Get Valuation Now
                     </a>
                 </div>
             </div>
-            
-            <div class="relative car-image-container float">
-                <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?q=80&w=1000&auto=format&fit=crop" 
-                     alt="Modern Car" 
-                     class="rounded-3xl shadow-2xl"
-                     onerror="this.src='https://via.placeholder.com/1000x600?text=Premium+Vehicle+Norwich'">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#00a650]/40 to-transparent pointer-events-none"></div>
+
+            <div class="relative float">
+                <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?q=80&w=1000&auto=format&fit=crop"
+                    alt="Modern Car" class="rounded-3xl shadow-2xl"
+                    onerror="this.src='https://via.placeholder.com/1000x600?text=Premium+Vehicle+Norwich'">
             </div>
         </div>
 
         <!-- Features Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-            <div class="glass p-8 rounded-3xl reveal border hover:border-[#00a650] transition-all">
-                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center text-[#00a650] mb-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24 reveal">
+            <div class="glass p-8 rounded-3xl border hover:shadow-xl transition-all">
+                <div
+                    class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-2xl flex items-center justify-center text-[#00a650] mb-6">
                     <i data-lucide="home"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3">We Come To You</h3>
-                <p class="opacity-70 leading-relaxed">Forget driving across town. Our friendly staff visits you at home or work at your convenience.</p>
+                <p class="opacity-70 leading-relaxed">Forget driving across town. Our friendly staff visits you at home
+                    or work at your convenience.</p>
             </div>
-            <div class="glass p-8 rounded-3xl reveal border hover:border-[#00a650] transition-all">
-                <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-2xl flex items-center justify-center text-yellow-600 mb-6">
+            <div class="glass p-8 rounded-3xl border hover:shadow-xl transition-all">
+                <div
+                    class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-2xl flex items-center justify-center text-yellow-600 mb-6">
                     <i data-lucide="banknote"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3">Instant Payment</h3>
-                <p class="opacity-70 leading-relaxed">Choose between physical cash or instant bank transfer. Your money, your choice, right on the spot.</p>
+                <p class="opacity-70 leading-relaxed">Choose between physical cash or instant bank transfer. Your money,
+                    your choice, right on the spot.</p>
             </div>
-            <div class="glass p-8 rounded-3xl reveal border hover:border-[#00a650] transition-all">
-                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
+            <div class="glass p-8 rounded-3xl border hover:shadow-xl transition-all">
+                <div
+                    class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
                     <i data-lucide="check-circle"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-3">Finance Settled</h3>
-                <p class="opacity-70 leading-relaxed">Still have a balance on your car? We deal with the finance companies directly to settle existing balances.</p>
+                <p class="opacity-70 leading-relaxed">Still have a balance on your car? We deal with the finance
+                    companies directly to settle existing balances.</p>
             </div>
         </div>
 
-        <!-- Conversion Section -->
+        <!-- Contact Methods Section -->
+        <div class="flex justify-center mb-24 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+                <a href="tel:07836708868"
+                    class="glass p-6 rounded-2xl flex items-center gap-5 border hover:border-[#00a650] transition-all group">
+                    <div
+                        class="w-14 h-14 bg-[#00a650] text-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="phone" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase font-bold opacity-50">Call or Text</p>
+                        <p class="text-xl font-black">07836 708868</p>
+                    </div>
+                </a>
+                <a href="mailto:buyacarnorwich@gmail.com"
+                    class="glass p-6 rounded-2xl flex items-center gap-5 border hover:border-[#00a650] transition-all group">
+                    <div
+                        class="w-14 h-14 bg-blue-600 text-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i data-lucide="mail" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase font-bold opacity-50">Email Us</p>
+                        <p class="text-lg font-black break-all">buyacarnorwich@gmail.com</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Valuation Section -->
         <div id="valuation" class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start reveal">
             <div class="space-y-8">
-                <h2 class="text-3xl md:text-5xl font-black italic">
-                    WHY NORWICH <br>
-                    <span class="text-[#00a650]">TRUSTS US?</span>
+                <h2 class="text-3xl md:text-5xl font-black italic uppercase">
+                    Why Norwich <br>
+                    <span class="text-[#00a650]">Trusts Us?</span>
                 </h2>
                 <ul class="space-y-6">
                     <li class="flex items-center gap-4">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#d6df20] flex items-center justify-center text-black font-bold text-sm">1</div>
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-[#d6df20] flex items-center justify-center text-black font-bold text-sm">
+                            1</div>
                         <span class="text-lg font-semibold">Friendly and approachable staff</span>
                     </li>
                     <li class="flex items-center gap-4">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#00a650] flex items-center justify-center text-white font-bold text-sm">2</div>
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-[#00a650] flex items-center justify-center text-white font-bold text-sm">
+                            2</div>
                         <span class="text-lg font-semibold">Truly Norwich based - we know the area</span>
                     </li>
                     <li class="flex items-center gap-4">
-                        <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#d6df20] flex items-center justify-center text-black font-bold text-sm">3</div>
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-[#d6df20] flex items-center justify-center text-black font-bold text-sm">
+                            3</div>
                         <span class="text-lg font-semibold">Same-day service from call to cash</span>
                     </li>
                 </ul>
-                <div class="p-6 rounded-2xl bg-[#00a650]/10 border border-[#00a650]/20">
-                    <p class="italic text-lg">"BuyACarNorwich.co.uk makes the process of selling your car as simple and transparent as possible."</p>
-                </div>
             </div>
 
             <div class="glass p-8 sm:p-10 rounded-[2.5rem] shadow-2xl border border-white/20">
                 <h3 class="text-2xl font-bold mb-2">Get a Fast Valuation</h3>
                 <p class="opacity-70 mb-8">Enter your details and we'll get back to you with a competitive offer.</p>
-                
+
                 <form id="valuationForm" class="space-y-5">
                     <div>
-                        <label class="block text-sm font-bold mb-2 uppercase tracking-wide opacity-80">Registration</label>
+                        <label
+                            class="block text-sm font-bold mb-2 uppercase tracking-wide opacity-80">Registration</label>
                         <input type="text" id="reg" placeholder="e.g. AO23 ABC" required
-                               class="w-full p-4 rounded-xl custom-input border-none input-focus text-lg font-bold shadow-sm transition-all uppercase">
-                        <p id="regError" class="text-red-500 text-xs mt-1 hidden font-bold">Please enter a valid UK registration</p>
+                            class="w-full p-4 rounded-xl custom-input border-none input-focus text-lg font-bold shadow-sm transition-all uppercase">
+                        <p id="regError" class="text-red-500 text-xs mt-1 hidden font-bold">Please enter a valid UK
+                            registration</p>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
-                            <label class="block text-sm font-bold mb-2 uppercase tracking-wide opacity-80">Mileage</label>
+                            <label
+                                class="block text-sm font-bold mb-2 uppercase tracking-wide opacity-80">Mileage</label>
                             <input type="number" id="mileage" placeholder="Current Miles" required min="0" max="999999"
-                                   class="w-full p-4 rounded-xl custom-input border-none input-focus text-lg shadow-sm transition-all">
+                                class="w-full p-4 rounded-xl custom-input border-none input-focus text-lg shadow-sm transition-all">
                         </div>
                         <div>
                             <label class="block text-sm font-bold mb-2 uppercase tracking-wide opacity-80">Phone</label>
                             <input type="tel" id="phonenumber" placeholder="Contact Number" required
-                                   class="w-full p-4 rounded-xl custom-input border-none input-focus text-lg shadow-sm transition-all">
-                            <p id="phoneError" class="text-red-500 text-xs mt-1 hidden font-bold">Please enter a valid UK phone number</p>
+                                class="w-full p-4 rounded-xl custom-input border-none input-focus text-lg shadow-sm transition-all">
+                            <p id="phoneError" class="text-red-500 text-xs mt-1 hidden font-bold">Please enter a valid
+                                UK phone number</p>
                         </div>
                     </div>
-                    <button type="submit" 
-                            class="w-full py-5 bg-[#00a650] text-white rounded-xl font-black text-xl hover:bg-[#008440] transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-3">
-                        SEND DETAILS <i data-lucide="send" class="w-6 h-6"></i>
+                    <button type="submit"
+                        class="w-full py-5 bg-[#00a650] text-white rounded-xl font-black text-xl hover:bg-[#008440] transition-all transform hover:scale-[1.02] active:scale-95 shadow-lg flex items-center justify-center gap-3">
+                        SUBMIT FOR VALUATION <i data-lucide="send" class="w-6 h-6"></i>
                     </button>
                 </form>
-                
-                <div id="successMsg" class="hidden mt-6 p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-center font-bold animate-bounce">
-                    Thank You! Launching your email...
-                </div>
             </div>
         </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-[#00a650] text-white py-12 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
-            <h2 class="brand-text text-3xl mb-4 italic">
-                <span class="text-[#d6df20]">BUY</span> A <span class="text-[#d6df20]">CAR</span> NORWICH
-            </h2>
-            <p class="max-w-md opacity-90 mb-8">
-                The most trusted car buying service in Norfolk for over four decades.
-            </p>
-            <div class="flex gap-6 mb-8 text-white/70">
-                <a href="#" class="hover:text-[#d6df20] transition-colors"><i data-lucide="facebook"></i></a>
-                <a href="#" class="hover:text-[#d6df20] transition-colors"><i data-lucide="twitter"></i></a>
-                <a href="#" class="hover:text-[#d6df20] transition-colors"><i data-lucide="instagram"></i></a>
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
+        <div
+            class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-3xl p-8 shadow-2xl border border-slate-200 dark:border-white/10 relative">
+            <button onclick="closeModal()"
+                class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div
+                    class="w-16 h-16 bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="check-circle" class="w-10 h-10"></i>
+                </div>
+                <h3 class="text-2xl font-black italic uppercase text-slate-900 dark:text-white">Details Ready!</h3>
+                <p class="text-slate-600 dark:text-slate-400 mt-2">Opening your email client now...</p>
             </div>
-            <p class="text-xs opacity-60">© <span id="year"></span> Buy A Car Norwich. All Rights Reserved.</p>
+
+            <div
+                class="bg-slate-100 dark:bg-slate-800/50 p-6 rounded-2xl mb-6 border border-slate-200 dark:border-slate-700">
+                <p class="text-xs uppercase font-bold text-slate-500 dark:text-slate-400 mb-4 tracking-wider">Email
+                    Content Summary</p>
+                <div id="copyableText" class="space-y-3 text-sm font-medium text-slate-800 dark:text-slate-200">
+                </div>
+            </div>
+
+            <p class="text-xs text-center text-slate-500 dark:text-slate-400 mb-6 px-2 leading-relaxed">
+                If your email app didn't open automatically, please click the <strong>Copy</strong> button below and
+                paste the details into a new email to <strong>buyacarnorwich@gmail.com</strong>.
+            </p>
+
+            <div class="flex flex-col gap-3">
+                <button onclick="copyToClipboard()" id="copyBtn"
+                    class="w-full py-4 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+                    <i data-lucide="copy" class="w-5 h-5"></i>
+                    <span>Copy Details to Clipboard</span>
+                </button>
+                <button onclick="closeModal()"
+                    class="w-full py-4 bg-[#00a650] text-white rounded-xl font-bold hover:bg-[#008440] transition-colors">
+                    Close
+                </button>
+            </div>
+            <p class="text-[10px] text-center mt-6 text-slate-400 dark:text-slate-500 uppercase tracking-widest">Sent to
+                buyacarnorwich@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#00a650] text-white py-16 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="text-center md:text-left">
+                <h2 class="brand-text text-3xl mb-4 italic text-white">
+                    <span class="text-[#d6df20]">BUY</span> A <span class="text-[#d6df20]">CAR</span> NORWICH
+                </h2>
+                <p class="max-w-md text-white/90 mb-6">
+                    The most trusted car buying service in Norfolk for over four decades. No fees, no hassle, just fair
+                    local prices.
+                </p>
+                <div class="flex justify-center md:justify-start gap-4 text-xs font-bold">
+                    <span class="flex items-center gap-1 text-white"><i data-lucide="check" class="w-4 h-4"></i> Fully
+                        Insured</span>
+                    <span class="flex items-center gap-1 text-white"><i data-lucide="check" class="w-4 h-4"></i> Local
+                        Experts</span>
+                </div>
+            </div>
+            <div class="space-y-4 text-center md:text-right">
+                <p class="text-lg font-bold">Get In Touch Directly</p>
+                <div class="flex flex-col gap-2 items-center md:items-end">
+                    <a href="tel:07836708868"
+                        class="text-2xl font-black text-[#d6df20] hover:scale-105 transition-transform">07836 708868</a>
+                    <a href="mailto:buyacarnorwich@gmail.com"
+                        class="text-lg text-white/80 hover:text-white transition-colors">buyacarnorwich@gmail.com</a>
+                </div>
+                <div class="flex justify-center md:justify-end gap-6 pt-4 text-white/70">
+                    <a href="#" class="hover:text-[#d6df20] transition-colors"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="hover:text-[#d6df20] transition-colors"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/20 text-center text-xs opacity-60">
+            <p>© <span id="year"></span> Buy A Car Norwich. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -309,65 +408,56 @@
             document.documentElement.classList.add('dark');
         }
 
-        const observerOptions = {
-            threshold: 0.1
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Validation Patterns
+        // Form Logic
         const UK_REG_PATTERN = /^(([A-Z]{2}[0-9]{2}\s?[A-Z]{3})|([A-Z][0-9]{1,3}[A-Z]{3})|([A-Z]{3}[0-9]{1,3}[A-Z])|([0-9]{1,4}[A-Z]{1,2})|([0-9]{1,3}[A-Z]{1,3})|([A-Z]{1,2}[0-9]{1,4})|([A-Z]{1,3}[0-9]{1,3})|([A-Z]{1,3}[0-9]{1,4})|([0-9]{3}[DX][0-9]{3}))$/i;
         const UK_PHONE_PATTERN = /^(?:(?:\(?(?:0(?:0|11)\)?[\s-]?\(?44\)?|[0\+]{1,2}44\)?)[\s-]?(?:\(?0\)?[\s-]?)?)|(?:\(?0))(?:(?:\d{5}\)?[\s-]?\d{4,5})|(?:\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3}))|(?:\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4})|(?:\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}))(?:[\s-]?(?:x|ext\.?|#)\d{3,4})?$/;
 
-        document.getElementById('valuationForm').addEventListener('submit', function(e) {
+        let currentEmailString = "";
+
+        document.getElementById('valuationForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const regInput = document.getElementById('reg');
             const phoneInput = document.getElementById('phonenumber');
             const mileageInput = document.getElementById('mileage');
             const regError = document.getElementById('regError');
             const phoneError = document.getElementById('phoneError');
-            
-            let isValid = true;
 
-            // Clean inputs
+            let isValid = true;
             const reg = regInput.value.trim().toUpperCase();
             const phone = phoneInput.value.trim();
             const mileage = mileageInput.value.trim();
 
-            // Reset errors
             [regInput, phoneInput].forEach(input => input.classList.remove('error-border'));
             [regError, phoneError].forEach(err => err.classList.add('hidden'));
 
-            // Validate Reg
-            if (!UK_REG_PATTERN.test(reg)) {
-                regInput.classList.add('error-border');
-                regError.classList.remove('hidden');
-                isValid = false;
-            }
-
-            // Validate Phone
-            if (!UK_PHONE_PATTERN.test(phone)) {
-                phoneInput.classList.add('error-border');
-                phoneError.classList.remove('hidden');
-                isValid = false;
-            }
+            if (!UK_REG_PATTERN.test(reg)) { regInput.classList.add('error-border'); regError.classList.remove('hidden'); isValid = false; }
+            if (!UK_PHONE_PATTERN.test(phone)) { phoneInput.classList.add('error-border'); phoneError.classList.remove('hidden'); isValid = false; }
 
             if (!isValid) return;
 
-            const success = document.getElementById('successMsg');
-            success.classList.remove('hidden');
-            
+            currentEmailString = `Vehicle Valuation Request\nReg: ${reg}\nMileage: ${mileage}\nPhone: ${phone}`;
+
+            const container = document.getElementById('copyableText');
+            container.innerHTML = `
+                <div class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2"><span>Reg:</span> <span class="font-black text-[#00a650]">${reg}</span></div>
+                <div class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2"><span>Mileage:</span> <span class="font-black">${mileage}</span></div>
+                <div class="flex justify-between"><span>Phone:</span> <span class="font-black">${phone}</span></div>
+            `;
+
+            document.getElementById('successModal').classList.remove('hidden');
+
             const recipient = "buyacarnorwich@gmail.com";
-            
             const subject = encodeURIComponent("Car Valuation Request - " + reg);
             const body = encodeURIComponent(
                 "Hello Buy A Car Norwich,\n\n" +
@@ -377,12 +467,37 @@
                 "Phone Number: " + phone + "\n\n" +
                 "Please get back to me with a price. Thank you!"
             );
-            
+
             setTimeout(() => {
                 window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
-                success.classList.add('hidden');
-            }, 1500);
+            }, 800);
         });
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        function copyToClipboard() {
+            const el = document.createElement('textarea');
+            el.value = currentEmailString;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            const btn = document.getElementById('copyBtn');
+            const original = btn.innerHTML;
+            btn.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i> Copied!';
+            btn.classList.add('bg-green-500', 'text-white');
+            lucide.createIcons();
+
+            setTimeout(() => {
+                btn.innerHTML = original;
+                btn.classList.remove('bg-green-500', 'text-white');
+                lucide.createIcons();
+            }, 2000);
+        }
     </script>
 </body>
+
 </html>
